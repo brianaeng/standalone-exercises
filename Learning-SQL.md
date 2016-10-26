@@ -253,19 +253,29 @@ For the exercises below use the attached SQLlite database.
 This will give you an SQL Lite shell like IRB to work with.  Then enter `.headers on` and `.mode column`
 
 1.  There is another table called types in the database which holds the types of pokemon.  Write a SELECT query to find all the types of Pokemon.    
-`SELECT identifier FROM types;`
+```
+SELECT identifier FROM types;
+```
 
 2.  Write a SELECT Query to find Pokemon who weigh more than 1000.  You can use the '>' sign in your WHERE clause.  
-`SELECT english_name FROM pokemon WHERE weight > 1000;`
+```
+SELECT english_name FROM pokemon WHERE weight > 1000;
+```
 
 3.  Write a query to find out the ID of the ice type of pokemon in the types table.  
-`SELECT id FROM types WHERE identifier = 'ice';`
+```
+SELECT id FROM types WHERE identifier = 'ice';
+```
 
 4.  Your Ada instructor doesn't like 'shadow' type pokemon, rename the type to 'super sneaky' with the UPDATE SQL command on the types table.  
-`UPDATE types SET identifier = "super sneaky" WHERE identifier = "shadow";`
+```
+UPDATE types SET identifier = "super sneaky" WHERE identifier = "shadow";
+```
 
 5.  The Bulbasaur pokemon had bad data entered in to the database.  Write an update query to set their weight to 1200.  
-`UPDATE pokemon SET weight = 1200 WHERE english_name = "Bulbasaur";`
+```
+UPDATE pokemon SET weight = 1200 WHERE english_name = "Bulbasaur";
+```
 
 6.  Write a statement to Create a new table to track your favorite Pokemon called favorite_pokemon
 It should have the following columns
@@ -295,9 +305,13 @@ INSERT INTO pokemon (id, species_id, english_name, height, weight, base_experien
 ```
 
 9.  Write a query to delete all Pokemon with a height of 1.  
-`DELETE FROM pokemon WHERE height = 1;`
+```
+DELETE FROM pokemon WHERE height = 1;
+```
 
 10.  Using the new favorite_pokemon table, Use a SELECT with a JOIN to produce a list of your favorite Pokemon Names.  
-`SELCT pokemon.english_name FROM pokemon JOIN favorite_pokemon ON favorite_pokemon.pokemon_id = pokemon.id;`
+```
+SELCT pokemon.english_name FROM pokemon JOIN favorite_pokemon ON favorite_pokemon.pokemon_id = pokemon.id;
+```
 
 11.  Optional/challenge:  You can see the list of tables in SQLite with `.tables` and see how the tables are made with `.schema <tablename>`.  See if you can find out the Japanese name of your favorite pokemon.  You will have to figure out how the tables are related.
