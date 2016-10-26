@@ -205,7 +205,7 @@ CREATE TABLE pokemon_abilities (
 	PRIMARY KEY (pokemon_id, slot),
 	FOREIGN KEY(pokemon_id) REFERENCES pokemon (id),
 	FOREIGN KEY(ability_id) REFERENCES abilities (id),
-	CHECK (is_hidden IN (0, 1))
+ V	CHECK (is_hidden IN (0, 1))
 );
 ```
 
@@ -253,18 +253,38 @@ For the exercises below use the attached SQLlite database.
 This will give you an SQL Lite shell like IRB to work with.  Then enter `.headers on` and `.mode column`
 
 1.  There is another table called types in the database which holds the types of pokemon.  Write a SELECT query to find all the types of Pokemon.  
+`SELECT identifier FROM types;`
 2.  Write a SELECT Query to find Pokemon who weigh more than 1000.  You can use the '>' sign in your WHERE clause.
+`SELECT english_name FROM pokemon WHERE weight > 1000;`
 3.  Write a query to find out the ID of the ice type of pokemon in the types table.
+`SELECT id FROM types WHERE identifier = 'ice';`
 4.  Your Ada instructor doesn't like 'shadow' type pokemon, rename the type to 'super sneaky' with the UPDATE SQL command on the types table.  
+`UPDATE types SET identifier = "super sneaky" WHERE identifier = "shadow";`
 5.  The Bulbasaur pokemon had bad data entered in to the database.  Write an update query to set their weight to 1200.
+`UPDATE pokemon SET weight = 1200 WHERE english_name = "Bulbasaur";`
 6.  Write a statement to Create a new table to track your favorite Pokemon called favorite_pokemon
 It should have the following columns
 	- id (integer, primary key)
 	- pokemon_id (integer - this will be a foreign key).
 	- person_name (text - this will be the person's name who likes that pokemon).
-
+```CREATE TABLE favorite_pokemon (
+id          INTEGER PRIMARY KEY AUTOINCREMENT,
+pokemon_id  INTEGER NOT NULL,
+person_name CHARS(50) NOT NULL,
+FOREIGN KEY(pokemon_id) REFERENCES pokemon(id)
+);
+```
 7.  Write a statement to insert 2 rows into your favorite_pokemon
+```INSERT INTO favorite_pokemon (pokemon_id, person_name) VALUES
+(167, "bob"),
+(432, "amy");
+```
 8.  We need more Pokemon (Gotta Catch'em All)!  Write a query to insert a new pokemon into the Pokemon table.  Name it after yourself.  
+```INSERT INTO pokemon (id, species_id, english_name, height, weight, base_experience, is_default, pokemon_order) VALUES
+(650, 650, "Briana", 1, 1, 325, 1, 674);
+```
 9.  Write a query to delete all Pokemon with a height of 1.
+`DELETE FROM pokemon WHERE height = 1;`
 10.  Using the new favorite_pokemon table, Use a SELECT with a JOIN to produce a list of your favorite Pokemon Names.
+`SELCT pokemon.english_name FROM pokemon JOIN favorite_pokemon ON favorite_pokemon.pokemon_id = pokemon.id;`
 11.  Optional/challenge:  You can see the list of tables in SQLite with `.tables` and see how the tables are made with `.schema <tablename>`.  See if you can find out the Japanese name of your favorite pokemon.  You will have to figure out how the tables are related.
