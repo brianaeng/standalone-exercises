@@ -272,8 +272,8 @@ It should have the following columns
 	- id (integer, primary key)
 	- pokemon_id (integer - this will be a foreign key).
 	- person_name (text - this will be the person's name who likes that pokemon).  
-
-```CREATE TABLE favorite_pokemon (
+```
+CREATE TABLE favorite_pokemon (
 id          INTEGER PRIMARY KEY AUTOINCREMENT,
 pokemon_id  INTEGER NOT NULL,
 person_name CHARS(50) NOT NULL,
@@ -282,13 +282,15 @@ FOREIGN KEY(pokemon_id) REFERENCES pokemon(id)
 ```
 
 7.  Write a statement to insert 2 rows into your favorite_pokemon  
-```INSERT INTO favorite_pokemon (pokemon_id, person_name) VALUES
+```
+INSERT INTO favorite_pokemon (pokemon_id, person_name) VALUES
 (167, "bob"),
 (432, "amy");
 ```
 
 8.  We need more Pokemon (Gotta Catch'em All)!  Write a query to insert a new pokemon into the Pokemon table.  Name it after yourself.  
-```INSERT INTO pokemon (id, species_id, english_name, height, weight, base_experience, is_default, pokemon_order) VALUES
+```
+INSERT INTO pokemon (id, species_id, english_name, height, weight, base_experience, is_default, pokemon_order) VALUES
 (650, 650, "Briana", 1, 1, 325, 1, 674);
 ```
 
