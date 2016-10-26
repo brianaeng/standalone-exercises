@@ -272,6 +272,7 @@ It should have the following columns
 	- id (integer, primary key)
 	- pokemon_id (integer - this will be a foreign key).
 	- person_name (text - this will be the person's name who likes that pokemon).  
+
 ```CREATE TABLE favorite_pokemon (
 id          INTEGER PRIMARY KEY AUTOINCREMENT,
 pokemon_id  INTEGER NOT NULL,
